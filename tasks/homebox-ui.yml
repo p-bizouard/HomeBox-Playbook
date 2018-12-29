@@ -21,7 +21,7 @@
     user: pi
     name: "Master"
     special_time: reboot
-    job: "nodemon -w /home/pi/homebox-ui/api -w /home/pi/homebox-ui/config /home/pi/homebox-ui/app.js > /var/log/homebox-ui.log 2>&1"
+    job: "/usr/local/bin/nodemon -w /home/pi/homebox-ui/api -w /home/pi/homebox-ui/config /home/pi/homebox-ui/app.js > /var/log/homebox-ui.log 2>&1"
   become: yes
 
 

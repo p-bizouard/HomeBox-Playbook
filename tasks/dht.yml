@@ -25,3 +25,8 @@
 #     chdir: /home/pi/homebox-build/Adafruit_Python_DHT/
 #   become: yes
 #   when: file_exists.stat.exists == False
+
+- name: copy dht-adafruit.py
+  copy: 
+    src: ../files/dht-adafruit.py 
+    dest: "/home/pi/dht-adafruit.py"

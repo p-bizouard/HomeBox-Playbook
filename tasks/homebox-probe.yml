@@ -21,7 +21,7 @@
     user: pi
     name: "Probe"
     special_time: reboot
-    job: "nodemon -w /home/pi/homebox-probe/api -w /home/pi/homebox-probe/config /home/pi/homebox-probe/app.js > /var/log/homebox-probe.log 2>&1"
+    job: "/usr/local/bin/nodemon -w /home/pi/homebox-probe/api -w /home/pi/homebox-probe/config /home/pi/homebox-probe/app.js > /var/log/homebox-probe.log 2>&1"
   become: yes
 
 - name: Creates an entry like "@reboot /some/job.sh"

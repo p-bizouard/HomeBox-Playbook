@@ -26,8 +26,7 @@
     name: adafruit-circuitpython-bme280
     executable: pip3
 
-# - name: copy bme280-adafruit.py
-#   copy: 
-#     src: ../files/bme280-adafruit.py 
-#     dest: "/home/pi/bme280-adafruit.py"
-#   when: file_exists.stat.exists == False
+- name: copy bme280-adafruit.py
+  copy: 
+    src: ../files/bme280-adafruit.py 
+    dest: "/home/pi/bme280-adafruit.py"
