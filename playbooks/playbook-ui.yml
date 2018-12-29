@@ -1,0 +1,9 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  # gather_facts: yes
+
+  tasks:
+    - include_tasks: ../tasks/system.yml
+    - include_tasks: ../tasks/wiringpi.yml
+    - include_tasks: ../tasks/homebox-ui.yml

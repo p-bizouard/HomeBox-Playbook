@@ -1,0 +1,7 @@
+---
+- name: Install dependancies from apt
+  become: yes
+  apt:
+    name: ['libjpeg8-dev','imagemagick','fswebcam']
+    state: present
+    

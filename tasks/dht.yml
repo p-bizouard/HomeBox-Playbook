@@ -1,0 +1,23 @@
+---
+- name: Install dependancies from apt
+  become: yes
+  apt:
+    name: ['build-essential', 'python-pip', 'python-dev', 'python-smbus', 'python-openssl', 'git']
+    state: present
+
+- name: check if file exists
+  stat: 
+    path: /home/pi/homebox-build/Adafruit_Python_DHT
+  register: file_exists
+
+- git:
+    repo: 'https://github.com/adafruit/Adafruit_Python_DHT.git'
+    dest: /home/pi/homebox-build/Adafruit_Python_DHT
+  when: file_exists.stat.exists == False
+
+- name: Run Py script
+  command: python setup.py install
+  args:
+    chdir: /home/pi/homebox-build/Adafruit_Python_DHT/
+  become: yes
+  when: file_exists.stat.exists == False

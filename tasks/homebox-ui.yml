@@ -1,0 +1,21 @@
+---
+
+- name: Install dependancies from apt
+  become: yes
+  apt:
+    name: ['nodejs', 'arp-scan']
+    state: present
+
+- name: Install npm packages globally
+  npm:
+    name: nodemon
+    global: yes
+  become: yes
+
+- name: Creates an entry like "@reboot /some/job.sh"
+  cron:
+    user: pi
+    name: "UI"
+    special_time: reboot
+    job: "nodemon -w /home/pi/homebox-ui/api -w /home/pi/homebox-ui/config /home/pi/homebox-ui/app.js > /var/log/homebox-ui.log 2>&1"
+  become: yes

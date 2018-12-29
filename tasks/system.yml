@@ -1,0 +1,19 @@
+
+- name: Expand rootfs
+  command: raspi-config --expand-rootfs
+  become: yes
+
+- name: Update apt
+  become: yes
+  apt: 
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Upgrade apt
+  become: yes
+  apt: 
+    upgrade: dist
+
+- name: set timezone
+  timezone:
+    name: Europe/Paris

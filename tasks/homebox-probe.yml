@@ -1,0 +1,29 @@
+---
+
+- name: Install dependancies from apt
+  become: yes
+  apt:
+    name: ['nodejs']
+    state: present
+
+- name: Install npm packages globally
+  npm:
+    name: nodemon
+    global: yes
+  become: yes
+
+- name: Creates an entry like "@reboot /some/job.sh"
+  cron:
+    user: pi
+    name: "Probe"
+    special_time: reboot
+    job: "nodemon -w /home/pi/homebox-probe/api -w /home/pi/homebox-probe/config /home/pi/homebox-probe/app.js > /var/log/homebox-probe.log 2>&1"
+  become: yes
+
+- name: Creates an entry like "@reboot /some/job.sh"
+  cron:
+    user: pi
+    name: "Probe webcam"
+    special_time: reboot
+    job: "fswebcam -S 30 -F 5 -d /dev/video0 -r 1920x1080 /home/pi/homebox-probe/assets/images/webcam.jpg"
+  become: yes
