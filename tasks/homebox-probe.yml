@@ -3,8 +3,12 @@
 - name: Install dependancies from apt
   become: yes
   apt:
-    name: ['nodejs', 'npm']
+    name: ['nodejs']
     state: present
+
+- name: Install NPM
+  shell: curl -L https://www.npmjs.com/install.sh | sh
+  become: yes
 
 - name: Install npm packages globally
   npm:
@@ -27,3 +31,10 @@
     special_time: reboot
     job: "fswebcam -S 30 -F 5 -d /dev/video0 -r 1920x1080 /home/pi/homebox-probe/assets/images/webcam.jpg"
   become: yes
+
+- file:
+  path: /var/log/homebox-probe.log
+  owner: pi
+  group: pi
+  # when specifying mode using octal numbers, add a leading 0
+  mode: 0644

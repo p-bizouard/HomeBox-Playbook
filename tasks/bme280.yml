@@ -2,28 +2,32 @@
 - name: Install dependancies from apt
   become: yes
   apt:
-    name: ['build-essential', 'python-pip', 'python-dev', 'python-smbus', 'git']
+    name: ['build-essential', 'python-pip', 'python-dev', 'python-smbus', 'python-openssl', 'git']
     state: present
 
-- name: check if file exists
-  stat: 
-    path: /home/pi/homebox-build/Adafruit_Python_GPIO
-  register: file_exists
+# - name: check if file exists
+#   stat: 
+#     path: /home/pi/homebox-build/Adafruit_Python_GPIO
+#   register: file_exists
 
-- git:
-    repo: 'https://github.com/adafruit/Adafruit_Python_GPIO.git'
-    dest: /home/pi/homebox-build/Adafruit_Python_GPIO
-  when: file_exists.stat.exists == False
+# - git:
+#     repo: 'https://github.com/adafruit/Adafruit_Python_GPIO.git'
+#     dest: /home/pi/homebox-build/Adafruit_Python_GPIO
+#   when: file_exists.stat.exists == False
 
-- name: Run Py script
-  command: python setup.py install
-  args:
-    chdir: /home/pi/homebox-build/Adafruit_Python_GPIO/
-  become: yes
-  when: file_exists.stat.exists == False
+# - name: Run Py script
+#   command: python setup.py install
+#   args:
+#     chdir: /home/pi/homebox-build/Adafruit_Python_GPIO/
+#   become: yes
+#   when: file_exists.stat.exists == False
 
-- name: copy bme280-adafruit.py
-  copy: 
-    src: ../files/bme280-adafruit.py 
-    dest: "/home/pi/bme280-adafruit.py"
-  when: file_exists.stat.exists == False
+- pip:
+    name: adafruit-circuitpython-bme280
+    executable: pip3
+
+# - name: copy bme280-adafruit.py
+#   copy: 
+#     src: ../files/bme280-adafruit.py 
+#     dest: "/home/pi/bme280-adafruit.py"
+#   when: file_exists.stat.exists == False
