@@ -3,7 +3,7 @@
 - name: Install dependancies from apt
   become: yes
   apt:
-    name: ['nodejs']
+    name: ['nodejs', 'npm']
     state: present
 
 - name: Install npm packages globally

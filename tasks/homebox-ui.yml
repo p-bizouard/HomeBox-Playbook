@@ -3,7 +3,7 @@
 - name: Install dependancies from apt
   become: yes
   apt:
-    name: ['nodejs', 'arp-scan', 'mariadb-server']
+    name: ['nodejs', 'arp-scan', 'mariadb-server', 'npm']
     state: present
 
 - name: Install npm packages globally

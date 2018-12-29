@@ -26,7 +26,7 @@ Note : Un Raspberry Pi peut acceuillir une sonde et l'UI simultanément
 ```bash
 git clone https://github.com/p-bizouard/homebox-playbook-ansible.git
 cd homebox-playbook-ansible
-ansible-playbook playbooks/playbook-probe.yml
+ansible-playbook playbooks/playbook-ui.yml
 ```
 RF Branché sur ?
 
