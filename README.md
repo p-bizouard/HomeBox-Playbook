@@ -3,6 +3,7 @@
 ## Installation d'ansible :
 
 ```bash
+sudo apt-get install -y dirmngr git
 echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 sudo apt-get update

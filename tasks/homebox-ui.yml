@@ -3,7 +3,7 @@
 - name: Install dependancies from apt
   become: yes
   apt:
-    name: ['nodejs', 'arp-scan']
+    name: ['nodejs', 'arp-scan', 'mariadb-server']
     state: present
 
 - name: Install npm packages globally
@@ -15,7 +15,7 @@
 - name: Creates an entry like "@reboot /some/job.sh"
   cron:
     user: pi
-    name: "UI"
+    name: "Master"
     special_time: reboot
     job: "nodemon -w /home/pi/homebox-ui/api -w /home/pi/homebox-ui/config /home/pi/homebox-ui/app.js > /var/log/homebox-ui.log 2>&1"
   become: yes

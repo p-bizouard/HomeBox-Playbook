@@ -1,8 +1,0 @@
- # Update Timezone Data
-- name: set /etc/timezone
-  become: yes
-  copy: content="Europe/Paris" dest=/etc/timezone
-
-- name: update tzdata
-  become: true
-  command: dpkg-reconfigure --frontend noninteractive tzdata

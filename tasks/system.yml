@@ -15,5 +15,6 @@
     upgrade: dist
 
 - name: set timezone
+  become: yes
   timezone:
     name: Europe/Paris
