@@ -29,12 +29,12 @@
   cron:
     user: pi
     name: "Refresh"
-    job: "/usr/bin/wget -q -O /dev/null https://paul-homebox.dev.sensi.fr/api/v1/sensors/refresh  >/dev/null 2>&1"
+    job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/sensors/refresh  >/dev/null 2>&1"
 - name: Creates an entry like "@reboot /some/job.sh"
   cron:
     user: pi
     name: "Refresh"
-    job: "/usr/bin/wget -q -O /dev/null https://paul-homebox.dev.sensi.fr/api/v1/devices/refresh  >/dev/null 2>&1"
+    job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/devices/refresh  >/dev/null 2>&1"
   become: yes
 
 - file:
