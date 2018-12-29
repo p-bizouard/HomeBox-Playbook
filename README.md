@@ -12,6 +12,8 @@ sudo apt-get install -y ansible
 ## Installation et exécution du playbook sur le raspberry de sonde :
 
 ```bash
+git clone https://github.com/p-bizouard/homebox-playbook-ansible.git
+cd homebox-playbook-ansible
 ansible-playbook playbooks/playbook-probe.yml
 ```
 BME280 branché sur ?
@@ -21,6 +23,8 @@ DHT branché sur ?
 Note : Un Raspberry Pi peut acceuillir une sonde et l'UI simultanément
 
 ```bash
+git clone https://github.com/p-bizouard/homebox-playbook-ansible.git
+cd homebox-playbook-ansible
 ansible-playbook playbooks/playbook-probe.yml
 ```
 RF Branché sur ?
