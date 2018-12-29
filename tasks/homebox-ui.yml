@@ -25,12 +25,13 @@
   become: yes
 
 
-- name: Creates an entry like "@reboot /some/job.sh"
+- name: Sensors refresh
   cron:
     user: pi
     name: "Refresh"
     job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/sensors/refresh  >/dev/null 2>&1"
-- name: Creates an entry like "@reboot /some/job.sh"
+
+- name: Devices redresh
   cron:
     user: pi
     name: "Refresh"
