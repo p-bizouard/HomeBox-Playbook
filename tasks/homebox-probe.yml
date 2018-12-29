@@ -28,7 +28,6 @@
   cron:
     user: pi
     name: "Probe webcam"
-    special_time: reboot
     job: "fswebcam -S 30 -F 5 -d /dev/video0 -r 1920x1080 /home/pi/homebox-probe/assets/images/webcam.jpg"
   become: yes
 
@@ -38,3 +37,4 @@
     group: pi
     # when specifying mode using octal numbers, add a leading 0
     mode: 0644
+    state: file
