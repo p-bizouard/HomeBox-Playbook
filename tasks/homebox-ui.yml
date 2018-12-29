@@ -28,13 +28,13 @@
 - name: Sensors refresh
   cron:
     user: pi
-    name: "Refresh"
+    name: "Sensors Refresh"
     job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/sensors/refresh  >/dev/null 2>&1"
 
 - name: Devices redresh
   cron:
     user: pi
-    name: "Refresh"
+    name: "Devices Refresh"
     job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/devices/refresh  >/dev/null 2>&1"
   become: yes
 
