@@ -39,8 +39,8 @@
   become: yes
 
 - file:
-  path: /var/log/homebox-ui.log
-  owner: pi
-  group: pi
-  # when specifying mode using octal numbers, add a leading 0
-  mode: 0644
+    path: /var/log/homebox-ui.log
+    owner: pi
+    group: pi
+    # when specifying mode using octal numbers, add a leading 0
+    mode: 0644
