@@ -17,8 +17,6 @@ git clone https://github.com/p-bizouard/homebox-playbook-ansible.git
 cd homebox-playbook-ansible
 ansible-playbook playbooks/playbook-probe.yml
 ```
-BME280 branché sur ?
-DHT branché sur ?
 
 ## Installation et exécution du playbook sur le raspberry d'UI :
 Note : Un Raspberry Pi peut acceuillir une sonde et l'UI simultanément
@@ -28,5 +26,6 @@ git clone https://github.com/p-bizouard/homebox-playbook-ansible.git
 cd homebox-playbook-ansible
 ansible-playbook playbooks/playbook-ui.yml
 ```
-RF Branché sur ?
 
+## Todo
+- [ ] Passer sur pm2

@@ -19,7 +19,7 @@
 
 - name: Install npm packages globally
   npm:
-    name: pm2
+    name: pm2 
     global: yes
   become: yes
 

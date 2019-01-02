@@ -2,7 +2,7 @@
 
 - name: Install dependancies from apt
   become: yes
-  apt:
+  apt: 
     name: ['nodejs']
     state: present
 
