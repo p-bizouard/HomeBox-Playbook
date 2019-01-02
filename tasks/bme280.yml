@@ -22,7 +22,8 @@
 #   become: yes
 #   when: file_exists.stat.exists == False
 
-- pip:
+- name: Install PIP BME280
+  pip:
     name: adafruit-circuitpython-bme280
     executable: pip3
 
