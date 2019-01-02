@@ -28,7 +28,7 @@
   become: yes
 
 - name: Start probe
-  shell: pm2 start /home/pi/homebox-probe/app.js --name probe --log-date-format "YYYY-MM-DD HH:mm Z"
+  shell: pm2 start /home/pi/homebox-probe/app.js --name probe --log-date-format "YYYY-MM-DD HH:mm Z" --watch
   ignore_errors: yes
 
 - name: Save probe
