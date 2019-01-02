@@ -28,7 +28,7 @@
   become: yes
 
 - name: Start ui
-  shell: pm2 start /home/pi/homebox-ui/app.js --name ui --log-date-format "YYYY-MM-DD HH:mm Z" --watch
+  shell: pm2 stop ui ; pm2 delete ui ; pm2 start /home/pi/homebox-ui/process.json
   ignore_errors: yes
 
 - name: Save ui
