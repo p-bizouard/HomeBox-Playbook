@@ -21,11 +21,11 @@
 
 - name: Install NPM
   shell: curl -L https://www.npmjs.com/install.sh | sh
-  when: is_npm_exist.rc==1 or npm_shell_output.stdout is version('6.5','<')
+  when: is_npm_exist.rc==1 or (npm_shell_output.stdout is defined and npm_shell_output.stdout is version('6.5','<'))
   become: yes
   ignore_errors: yes
 
-- name: Install npm packages globally
+- name: Install pm2 packages globally
   npm:
     name: pm2
     global: yes
