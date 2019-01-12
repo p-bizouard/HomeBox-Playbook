@@ -4,10 +4,10 @@
   # gather_facts: yes
 
   tasks:
-    - include_tasks: ../tasks/system.yml
-    - include_tasks: ../tasks/wiringpi.yml
-    - include_tasks: ../tasks/dht.yml
-    - include_tasks: ../tasks/bme280.yml
-    - include_tasks: ../tasks/webcam.yml
+    # - include_tasks: ../tasks/system.yml
+    # - include_tasks: ../tasks/wiringpi.yml
+    # - include_tasks: ../tasks/dht.yml
+    # - include_tasks: ../tasks/bme280.yml
+    # - include_tasks: ../tasks/webcam.yml
     - include_tasks: ../tasks/node.yml
-    - include_tasks: ../tasks/homebox-probe.yml
+    # - include_tasks: ../tasks/homebox-probe.yml
