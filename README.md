@@ -28,4 +28,4 @@ ansible-playbook playbooks/playbook-ui.yml
 ```
 
 ## Todo
-- [ ] Passer sur pm2
+- [X] Passer sur pm2
