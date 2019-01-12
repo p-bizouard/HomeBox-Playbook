@@ -1,35 +1,15 @@
 ---
 
-- name: Install dependancies from apt
-  become: yes
-  apt: 
-    name: ['nodejs']
-    state: present
-
-- name: Get NPM version
-  shell: npm -v | egrep '^[0-9]*\.[0-9]*' -o
-  register: npm_shell_output
-
-- debug: msg="{{ npm_shell_output.stdout}}"
-
-- name: Install NPM
-  shell: curl -L https://www.npmjs.com/install.sh | sh
-  when: npm_shell_output.stdout is version('6.5','<')
-  become: yes
-
-- name: Install npm packages globally
-  npm:
-    name: pm2
-    global: yes
-  become: yes
-
-- name: Install PM2 systemd
-  shell: env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u pi --hp /home/pi
-  become: yes
-
 - name: Start probe
   shell: pm2 stop ui ; pm2 delete ui ; pm2 start /home/pi/homebox-probe/process.json
   ignore_errors: yes
 
 - name: Save probe
   shell: pm2 save
+
+- name: Creates an entry like "@reboot /some/job.sh"
+  cron:
+    user: pi
+    name: "Probe webcam"
+    job: "fswebcam -S 30 -F 5 -d /dev/video0 -r 1920x1080 /home/pi/homebox-probe/assets/images/webcam.jpg"
+  become: yes

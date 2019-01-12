@@ -6,4 +6,5 @@
   tasks:
     - include_tasks: ../tasks/system.yml
     - include_tasks: ../tasks/wiringpi.yml
+    - include_tasks: ../tasks/node.yml
     - include_tasks: ../tasks/homebox-ui.yml

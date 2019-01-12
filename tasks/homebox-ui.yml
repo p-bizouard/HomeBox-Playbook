@@ -1,35 +1,29 @@
 ---
 
-- name: Install dependancies from apt
-  become: yes
-  apt:
-    name: ['nodejs']
-    state: present
-
-- name: Get NPM version
-  shell: npm -v | egrep '^[0-9]*\.[0-9]*' -o
-  register: npm_shell_output
-
-- debug: msg="{{ npm_shell_output.stdout}}"
-
-- name: Install NPM
-  shell: curl -L https://www.npmjs.com/install.sh | sh
-  when: npm_shell_output.stdout is version('6.5','<')
-  become: yes
-
-- name: Install npm packages globally
-  npm:
-    name: pm2 
-    global: yes
-  become: yes
-
-- name: Install PM2 systemd
-  shell: env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u pi --hp /home/pi
-  become: yes
-
 - name: Start ui
   shell: pm2 stop ui ; pm2 delete ui ; pm2 start /home/pi/homebox-ui/process.json
   ignore_errors: yes
 
 - name: Save ui
   shell: pm2 save
+
+
+- name: Sensors refresh
+  cron:
+    user: pi
+    name: "Sensors refresh"
+    job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/sensors/refresh  >/dev/null 2>&1"
+
+- name: Devices redresh
+  cron:
+    user: pi
+    name: "Devices refresh"
+    job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/devices/refresh  >/dev/null 2>&1"
+  become: yes
+
+- name: Webcams redresh
+  cron:
+    user: pi
+    name: "Webcams refresh"
+    job: "/usr/bin/wget -q -O /dev/null http://localhost:8080/api/v1/webcams/refresh  >/dev/null 2>&1"
+  become: yes
