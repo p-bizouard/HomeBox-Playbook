@@ -27,5 +27,11 @@ cd homebox-playbook-ansible
 ansible-playbook playbooks/playbook-ui.yml
 ```
 
+## Optionnel : hostname
+```bash
+sudo hostnamectl set-hostname NOM_DU_RASPBERRY
+echo $(hostname -I | cut -d\  -f1) $(hostname) | sudo tee -a /etc/hosts
+```
+
 ## Todo
 - [X] Passer sur pm2
