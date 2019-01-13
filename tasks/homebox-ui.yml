@@ -1,7 +1,7 @@
 ---
 
 - name: Start ui
-  shell: pm2 stop ui ; pm2 delete ui ; pm2 start /home/pi/homebox-ui/process.json
+  shell: pm2 stop ui ; pm2 delete ui ; pm2 start /home/pi/homebox-ui/process.json ; pm2 save
   ignore_errors: yes
 
 - name: Save ui
